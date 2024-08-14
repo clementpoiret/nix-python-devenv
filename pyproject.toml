@@ -7,6 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+jax = {extras = ["cuda12"], version = "^0.4.31"}
 
 
 [build-system]
