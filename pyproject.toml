@@ -1,4 +1,3 @@
-
 [project]
 name = "nix-python-devenv"
 version = "0.1.0"
