@@ -1,15 +1,18 @@
-[tool.poetry]
+
+[project]
 name = "nix-python-devenv"
 version = "0.1.0"
 description = ""
-authors = ["clementpoiret <poiret.clement@outlook.fr>"]
+license = "MIT"
 readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-jax = {extras = ["cuda12"], version = "^0.4.31"}
-
+[project.optional-dependencies]
+extra = [
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
