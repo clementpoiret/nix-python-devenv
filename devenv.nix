@@ -1,4 +1,8 @@
-{ pkgs, lib, config, inputs, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 let
   buildInputs = with pkgs; [
     cudaPackages.cuda_cudart
@@ -8,17 +12,14 @@ let
     libuv
     zlib
   ];
-in 
+in
 {
   packages = with pkgs; [
     cudaPackages.cuda_nvcc
   ];
 
   env = {
-    LD_LIBRARY_PATH = "${
-      with pkgs;
-      lib.makeLibraryPath buildInputs
-    }:/run/opengl-driver/lib:/run/opengl-driver-32/lib";
+    LD_LIBRARY_PATH = "${lib.makeLibraryPath buildInputs}:/run/opengl-driver/lib:/run/opengl-driver-32/lib";
     XLA_FLAGS = "--xla_gpu_cuda_data_dir=${pkgs.cudaPackages.cudatoolkit}"; # For tensorflow with GPU support
     CUDA_PATH = pkgs.cudaPackages.cudatoolkit;
   };
